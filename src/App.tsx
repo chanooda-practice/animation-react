@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BasicAnimation from "./components/BasicAnimation";
+import DeepAnimation from "./components/DeepAnimation";
+import SharedLayout from "./components/SharedLayout";
+import Slider from "./components/Slider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<BasicAnimation />} />
+        <Route path="/deep" element={<DeepAnimation />} />
+        <Route path="/slider" element={<Slider />} />
+        <Route path="/animatesharedlayout" element={<SharedLayout />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;

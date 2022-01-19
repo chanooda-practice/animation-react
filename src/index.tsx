@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import normalize from "styled-normalize";
+import App from "./App";
+import { darkTheme } from "./theme";
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  body{
+    width: 100vw;
+    height: 300vh;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
